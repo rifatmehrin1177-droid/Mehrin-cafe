@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mehréa Café | Menu</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --bg-main: #0d0417;
+            --bg-card: #180829;
+            --bg-nav: #140622;
+
+            --text-main: #ffffff;
+            --text-sub: #e5d4ff;
+            --text-accent: #c084fc;
+
+            --border-color: #542080;
+            --input-bg: #210d35;
+        }
+
+        [data-bs-theme="light"] {
+            --bg-main: #f8f1ff;
+            --bg-card: #ffffff;
+            --bg-nav: #4c1d73;
+
+            --text-main: #250b38;
+            --text-sub: #5d287d;
+            --text-accent: #7e22ce;
+
+            --border-color: #d8b4fe;
+            --input-bg: #ffffff;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: var(--text-main);
+            font-family: "Segoe UI", sans-serif;
+            transition: 0.3s;
+        }
+
+        /* NAVBAR */
+
+        .bg-purple-nav {
+            background: var(--bg-nav) !important;
+        }
+
+        .navbar-brand {
+            color: #d8b4fe !important;
+        }
+
+        .nav-link {
+            color: #eee !important;
+            margin-left: 8px;
+        }
+
+        [data-bs-theme="light"] .nav-link {
+            color: #ffffff !important;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #d8b4fe !important;
+        }
+
+        /* THEME BUTTON */
+
+        .theme-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid #a855f7;
+            background: transparent;
+            color: white;
+            font-size: 18px;
+        }
+
+        .theme-btn:hover {
+            background: #8b5cf6;
+        }
+
+        /* HERO */
+
+        .menu-hero {
+            min-height: 350px;
+
+            background:
+                linear-gradient(
+                    rgba(13,4,23,.55),
+                    rgba(13,4,23,.85)
+                ),
+
+                url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .menu-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 5px 20px black;
+        }
+
+        .menu-hero p {
+            color: #f0dfff;
+            font-size: 1.1rem;
+        }
+
+        .purple-text {
+            color: var(--text-accent);
+        }
+
+        /* MENU CARD */
+
+        .menu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            height: 100%;
+
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 15px 40px rgba(168,85,247,.20);
+        }
+
+        /* IMAGE */
+
+        .menu-img-wrap {
+            width: 100%;
+            height: 230px;
+
+            overflow: hidden;
+
+            background: #210d35;
+        }
+
+        .menu-img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.4s;
+        }
+
+        .menu-card:hover .menu-img {
+            transform: scale(1.08);
+        }
+
+        /* CONTENT */
+
+        .menu-content {
+            padding: 20px;
+        }
+
+        .menu-name {
+            font-weight: 700;
+            font-size: 1.18rem;
+
+            color: var(--text-main);
+
+            min-height: 55px;
+        }
+
+        .menu-description {
+            color: var(--text-sub);
+
+            font-size: 0.92rem;
+
+            min-height: 55px;
+        }
+
+        .price {
+            color: var(--text-accent);
+
+            font-weight: 800;
+
+            font-size: 1.15rem;
+        }
+
+        /* CATEGORY BADGES */
+
+        .badge-matcha {
+            background: #5b8c3d;
+        }
+
+        .badge-mojito {
+            background: #20a39e;
+        }
+
+        .badge-shake {
+            background: #27b6d6;
+        }
+
+        .badge-cake {
+            background: #d94f70;
+        }
+
+        .badge-pudding {
+            background: #dcae3f;
+            color: #222;
+        }
+
+        .badge-snack {
+            background: #6c5ce7;
+        }
+
+        /* SECTION */
+
+        .section-title {
+            color: var(--text-accent);
+
+            font-weight: 800;
+
+            margin-top: 30px;
+        }
+
+        .section-subtitle {
+            color: var(--text-sub);
+        }
+
+        /* FILTER */
+
+        .filter-btn {
+            border: 1px solid #8b5cf6;
+
+            background: transparent;
+
+            color: var(--text-main);
+
+            border-radius: 30px;
+
+            padding: 9px 20px;
+
+            margin: 5px;
+
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #a855f7
+            );
+
+            color: white;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--bg-nav);
+            color: white;
+
+            margin-top: 60px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-purple-nav sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold fs-3" href="index.html">
+
+            <i class="bi bi-cup-hot-fill me-2"></i>
+
+            Mehréa Café
+
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">
+                        Our Story
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="menu.html">
+                        Menu
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">
+                        Gallery
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        Reservation
+                    </a>
+                </li>
+
+
+                <li class="nav-item ms-lg-3">
+
+                    <button
+                        class="theme-btn"
+                        onclick="toggleTheme()">
+
+                        <i
+                            class="bi bi-sun-fill"
+                            id="themeIcon">
+                        </i>
+
+                    </button>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<section class="menu-hero">
+
+    <div class="container">
+
+        <h1>
+            Our Delicious Menu
+        </h1>
+
+        <p>
+            Handcrafted drinks, creamy desserts & delicious café favorites
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- MENU -->
+
+<section class="py-5">
+
+    <div class="container">
+
+
+        <h2 class="text-center section-title">
+            Explore Mehréa's Favorites
+        </h2>
+
+
+        <p class="text-center section-subtitle mb-4">
+
+            Every drink, dessert and snack is made for a beautiful café experience 💜
+
+        </p>
+
+
+
+        <!-- FILTER BUTTONS -->
+
+        <div class="text-center mb-5">
+
+            <button
+                class="filter-btn active"
+                onclick="filterMenu('all',this)">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterMenu('matcha',this)">
+
+                Matcha
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterMenu('mojito',this)">
+
+                Mojito
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterMenu('shake',this)">
+
+                Thick Shakes
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterMenu('cake',this)">
+
+                Cakes
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterMenu('pudding',this)">
+
+                Pudding
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filterMenu('snack',this)">
+
+                Snacks
+
+            </button>
+
+        </div>
+
+
+
+        <div class="row g-4" id="menuContainer">
+
+
+            <!-- 1 MATCHA -->
+
+            <div class="col-lg-4 col-md-6 menu-item matcha">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Japanese Uji Matcha Latte"
+
+                            src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-matcha">
+                            Matcha
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Japanese Uji Matcha Latte
+                        </h5>
+
+                        <p class="menu-description">
+                            Creamy ceremonial-style matcha blended with smooth milk.
+                        </p>
+
+                        <div class="price">
+                            390 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 2 -->
+
+            <div class="col-lg-4 col-md-6 menu-item matcha">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Iced Blueberry Matcha"
+
+                            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-matcha">
+                            Matcha
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Iced Blueberry Matcha
+                        </h5>
+
+                        <p class="menu-description">
+                            Refreshing iced matcha with a sweet blueberry twist.
+                        </p>
+
+                        <div class="price">
+                            420 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 3 -->
+
+            <div class="col-lg-4 col-md-6 menu-item matcha">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Matcha Vanilla Frappe"
+
+                            src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-matcha">
+                            Matcha
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Matcha Vanilla Frappe
+                        </h5>
+
+                        <p class="menu-description">
+                            Blended matcha, vanilla ice cream and creamy milk.
+                        </p>
+
+                        <div class="price">
+                            440 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 4 MOJITO -->
+
+            <div class="col-lg-4 col-md-6 menu-item mojito">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Passionfruit Purple Mojito"
+
+                            src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=85">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-mojito">
+                            Mojito
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Passionfruit Purple Mojito
+                        </h5>
+
+                        <p class="menu-description">
+                            Passionfruit, mint, sparkling soda and refreshing ice.
+                        </p>
+
+                        <div class="price">
+                            320 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 5 -->
+
+            <div class="col-lg-4 col-md-6 menu-item mojito">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Classic Mint Mojito"
+
+                            src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-mojito">
+                            Mojito
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Classic Mint Mojito
+                        </h5>
+
+                        <p class="menu-description">
+                            Fresh mint, lime and sparkling soda over crushed ice.
+                        </p>
+
+                        <div class="price">
+                            280 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 6 -->
+
+            <div class="col-lg-4 col-md-6 menu-item mojito">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Green Apple Mojito"
+
+                            src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-mojito">
+                            Mojito
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Green Apple Mojito
+                        </h5>
+
+                        <p class="menu-description">
+                            Tangy green apple with mint and sparkling soda.
+                        </p>
+
+                        <div class="price">
+                            310 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 7 -->
+
+            <div class="col-lg-4 col-md-6 menu-item mojito">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Blue Lagoon Mojito"
+
+                            src="https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-mojito">
+                            Mojito
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Blue Lagoon Mojito
+                        </h5>
+
+                        <p class="menu-description">
+                            Cool citrus drink with blue syrup and lemonade.
+                        </p>
+
+                        <div class="price">
+                            330 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 8 KITKAT -->
+
+            <div class="col-lg-4 col-md-6 menu-item shake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="KitKat Overload Shake"
+
+                            src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-shake">
+                            Thick Shake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            KitKat Overload Shake
+                        </h5>
+
+                        <p class="menu-description">
+                            Rich chocolate shake topped with crunchy chocolate pieces.
+                        </p>
+
+                        <div class="price">
+                            380 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 9 OREO -->
+
+            <div class="col-lg-4 col-md-6 menu-item shake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Oreo Crunch Shake"
+
+                            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-shake">
+                            Thick Shake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Oreo Crunch Shake
+                        </h5>
+
+                        <p class="menu-description">
+                            Creamy vanilla shake with chocolate cookie crunch.
+                        </p>
+
+                        <div class="price">
+                            340 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 10 NUTELLA CORRECTED -->
+
+            <div class="col-lg-4 col-md-6 menu-item shake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Nutella Hazelnut Shake"
+
+                            src="https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-shake">
+                            Thick Shake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Nutella Hazelnut Shake
+                        </h5>
+
+                        <p class="menu-description">
+                            Creamy chocolate hazelnut shake with rich Nutella flavor.
+                        </p>
+
+                        <div class="price">
+                            420 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 11 PURPLE TARO -->
+
+            <div class="col-lg-4 col-md-6 menu-item shake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Purple Taro Milkshake"
+
+                            src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-shake">
+                            Thick Shake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Purple Taro Milkshake
+                        </h5>
+
+                        <p class="menu-description">
+                            Creamy purple taro shake with a smooth sweet flavor.
+                        </p>
+
+                        <div class="price">
+                            360 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 12 MANGO -->
+
+            <div class="col-lg-4 col-md-6 menu-item shake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Mango Madness Shake"
+
+                            src="https://images.unsplash.com/photo-1553530666-ba11a90a0868?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-shake">
+                            Thick Shake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Mango Madness Shake
+                        </h5>
+
+                        <p class="menu-description">
+                            Sweet mango blended into a refreshing creamy shake.
+                        </p>
+
+                        <div class="price">
+                            350 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 13 STRAWBERRY CORRECTED -->
+
+            <div class="col-lg-4 col-md-6 menu-item shake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Strawberry Cheesecake Shake"
+
+                            src="https://images.unsplash.com/photo-1553530666-ba11a90a0868?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-shake">
+                            Thick Shake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Strawberry Cheesecake Shake
+                        </h5>
+
+                        <p class="menu-description">
+                            Strawberry milkshake inspired by creamy cheesecake.
+                        </p>
+
+                        <div class="price">
+                            390 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 14 BROWN SUGAR -->
+
+            <div class="col-lg-4 col-md-6 menu-item shake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Brown Sugar Boba Shake"
+
+                            src="https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-shake">
+                            Thick Shake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Brown Sugar Boba Shake
+                        </h5>
+
+                        <p class="menu-description">
+                            Creamy milkshake with chewy boba pearls and brown sugar.
+                        </p>
+
+                        <div class="price">
+                            370 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 15 CHOCOLATE -->
+
+            <div class="col-lg-4 col-md-6 menu-item shake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Dark Chocolate Shake"
+
+                            src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-shake">
+                            Thick Shake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Dark Chocolate Lava Shake
+                        </h5>
+
+                        <p class="menu-description">
+                            Deep chocolate shake with a rich cocoa flavor.
+                        </p>
+
+                        <div class="price">
+                            410 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 16 RED VELVET -->
+
+            <div class="col-lg-4 col-md-6 menu-item cake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Red Velvet Cake"
+
+                            src="https://images.unsplash.com/photo-1586788680434-30d324f2f8b0?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-cake">
+                            Cake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Red Velvet Dream Slice
+                        </h5>
+
+                        <p class="menu-description">
+                            Soft red velvet cake with creamy frosting.
+                        </p>
+
+                        <div class="price">
+                            280 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 17 FUDGE CAKE -->
+
+            <div class="col-lg-4 col-md-6 menu-item cake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Fudge Chocolate Cake"
+
+                            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-cake">
+                            Cake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Fudge Chocolate Cake
+                        </h5>
+
+                        <p class="menu-description">
+                            Rich layered chocolate cake with smooth fudge.
+                        </p>
+
+                        <div class="price">
+                            310 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 18 CHEESECAKE -->
+
+            <div class="col-lg-4 col-md-6 menu-item cake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="New York Cheesecake"
+
+                            src="https://images.unsplash.com/photo-1524351199678-941a58a3df50?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-cake">
+                            Cake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            New York Cheesecake
+                        </h5>
+
+                        <p class="menu-description">
+                            Classic creamy cheesecake with a buttery biscuit base.
+                        </p>
+
+                        <div class="price">
+                            380 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 19 BLUEBERRY TART -->
+
+            <div class="col-lg-4 col-md-6 menu-item cake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Blueberry Tart"
+
+                            src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-cake">
+                            Dessert
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Blueberry Tart
+                        </h5>
+
+                        <p class="menu-description">
+                            Buttery pastry filled with sweet blueberry topping.
+                        </p>
+
+                        <div class="price">
+                            260 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 20 LAVA CAKE -->
+
+            <div class="col-lg-4 col-md-6 menu-item cake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Molten Chocolate Lava Cake"
+
+                            src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-cake">
+                            Cake
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Molten Choco Lava Cake
+                        </h5>
+
+                        <p class="menu-description">
+                            Warm chocolate cake with a rich molten center.
+                        </p>
+
+                        <div class="price">
+                            320 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 21 TIRAMISU -->
+
+            <div class="col-lg-4 col-md-6 menu-item cake">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Tiramisu Dessert"
+
+                            src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-cake">
+                            Dessert
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Mehréa Tiramisu Cup
+                        </h5>
+
+                        <p class="menu-description">
+                            Creamy coffee-flavored Italian style dessert.
+                        </p>
+
+                        <div class="price">
+                            350 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 22 CARAMEL PUDDING -->
+
+            <div class="col-lg-4 col-md-6 menu-item pudding">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Caramel Custard Pudding"
+
+                            src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-pudding">
+                            Pudding
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Caramel Custard Egg Pudding
+                        </h5>
+
+                        <p class="menu-description">
+                            Silky smooth egg custard topped with caramel.
+                        </p>
+
+                        <div class="price">
+                            180 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 23 MANGO PUDDING -->
+
+            <div class="col-lg-4 col-md-6 menu-item pudding">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Mango Custard"
+
+                            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-pudding">
+                            Pudding
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Mango Custard Pudding
+                        </h5>
+
+                        <p class="menu-description">
+                            Sweet mango custard with a creamy smooth texture.
+                        </p>
+
+                        <div class="price">
+                            220 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 24 CHOCOLATE PUDDING -->
+
+            <div class="col-lg-4 col-md-6 menu-item pudding">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Chocolate Pudding"
+
+                            src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-pudding">
+                            Pudding
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Chocolate Silk Pudding
+                        </h5>
+
+                        <p class="menu-description">
+                            Smooth and creamy chocolate dessert.
+                        </p>
+
+                        <div class="price">
+                            200 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 25 PANNA COTTA -->
+
+            <div class="col-lg-4 col-md-6 menu-item pudding">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Lavender Panna Cotta"
+
+                            src="https://images.unsplash.com/photo-1481391032119-d89fee407e44?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-pudding">
+                            Dessert
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Lavender Panna Cotta
+                        </h5>
+
+                        <p class="menu-description">
+                            Delicate creamy panna cotta with a floral touch.
+                        </p>
+
+                        <div class="price">
+                            290 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 26 LOADED FRIES -->
+
+            <div class="col-lg-4 col-md-6 menu-item snack">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Loaded Cheese Fries"
+
+                            src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-snack">
+                            Snacks
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Loaded Cheese Fries
+                        </h5>
+
+                        <p class="menu-description">
+                            Crispy fries topped with creamy melted cheese.
+                        </p>
+
+                        <div class="price">
+                            260 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 27 CLUB SANDWICH -->
+
+            <div class="col-lg-4 col-md-6 menu-item snack">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Club Sandwich"
+
+                            src="https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-snack">
+                            Snacks
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Garlic Butter Club Sandwich
+                        </h5>
+
+                        <p class="menu-description">
+                            Toasted layered sandwich with chicken and fresh fillings.
+                        </p>
+
+                        <div class="price">
+                            340 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 28 CHICKEN STRIPS CORRECT -->
+
+            <div class="col-lg-4 col-md-6 menu-item snack">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Crispy Chicken Strips"
+
+                            src="https://images.unsplash.com/photo-1562967916-eb82221dfb36?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-snack">
+                            Snacks
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Crispy Chicken Strips
+                        </h5>
+
+                        <p class="menu-description">
+                            Golden crispy chicken strips served with delicious dip.
+                        </p>
+
+                        <div class="price">
+                            290 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 29 CHICKEN WRAP -->
+
+            <div class="col-lg-4 col-md-6 menu-item snack">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="BBQ Chicken Wrap"
+
+                            src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-snack">
+                            Snacks
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            BBQ Chicken Wrap
+                        </h5>
+
+                        <p class="menu-description">
+                            Smoky BBQ chicken wrapped inside a soft tortilla.
+                        </p>
+
+                        <div class="price">
+                            320 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 30 WAFFLE -->
+
+            <div class="col-lg-4 col-md-6 menu-item snack">
+
+                <div class="menu-card">
+
+                    <div class="menu-img-wrap">
+
+                        <img
+                            class="menu-img"
+                            alt="Belgian Waffle with Ice Cream"
+
+                            src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=900&q=85"
+
+                            onerror="this.src='https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=900&q=85'">
+
+                    </div>
+
+                    <div class="menu-content">
+
+                        <span class="badge badge-snack">
+                            Dessert
+                        </span>
+
+                        <h5 class="menu-name mt-3">
+                            Belgian Waffle with Ice Cream
+                        </h5>
+
+                        <p class="menu-description">
+                            Golden Belgian waffle served with creamy ice cream.
+                        </p>
+
+                        <div class="price">
+                            360 BDT
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer class="text-center py-4">
+
+    <p class="mb-1 fw-bold">
+        <i class="bi bi-cup-hot-fill"></i>
+        Mehréa Café
+    </p>
+
+    <p class="mb-0 small text-white-50">
+        © 2026 Mehréa Café BD — Purple Aesthetic Café Experience
+    </p>
+
+</footer>
+
+
+
+<!-- BOOTSTRAP JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- THEME -->
+
+<script>
+
+function toggleTheme() {
+
+    const html = document.documentElement;
+
+    const currentTheme =
+        html.getAttribute("data-bs-theme");
+
+    const newTheme =
+        currentTheme === "dark"
+        ? "light"
+        : "dark";
+
+
+    html.setAttribute(
+        "data-bs-theme",
+        newTheme
+    );
+
+
+    localStorage.setItem(
+        "mehrea_theme",
+        newTheme
+    );
+
+
+    updateIcon(newTheme);
+
+}
+
+
+function updateIcon(theme) {
+
+    const icon =
+        document.getElementById("themeIcon");
+
+
+    if (theme === "dark") {
+
+        icon.className =
+            "bi bi-sun-fill";
+
+    }
+
+    else {
+
+        icon.className =
+            "bi bi-moon-stars-fill";
+
+    }
+
+}
+
+
+const savedTheme =
+    localStorage.getItem("mehrea_theme")
+    || "dark";
+
+
+document.documentElement.setAttribute(
+    "data-bs-theme",
+    savedTheme
+);
+
+
+updateIcon(savedTheme);
+
+</script>
+
+
+
+<!-- MENU FILTER -->
+
+<script>
+
+function filterMenu(category, button) {
+
+    const items =
+        document.querySelectorAll(".menu-item");
+
+
+    const buttons =
+        document.querySelectorAll(".filter-btn");
+
+
+    buttons.forEach(btn => {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+
+    items.forEach(item => {
+
+        if (
+            category === "all" ||
+            item.classList.contains(category)
+        ) {
+
+            item.style.display = "block";
+
+        }
+
+        else {
+
+            item.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>

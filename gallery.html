@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | Mehréa Café</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           COLOR VARIABLES
+        ========================== */
+
+        :root {
+            --bg-main: #0d0417;
+            --bg-card: #180829;
+            --bg-nav: #140622;
+
+            --text-main: #ffffff;
+            --text-sub: #decdf4;
+            --accent: #c084fc;
+
+            --border: #552080;
+
+            --purple-dark: #2e0750;
+            --purple-mid: #7e22ce;
+            --purple-light: #d8b4fe;
+        }
+
+
+        /* LIGHT MODE */
+
+        [data-bs-theme="light"] {
+            --bg-main: #f7efff;
+            --bg-card: #ffffff;
+            --bg-nav: #4c147d;
+
+            --text-main: #250538;
+            --text-sub: #5d287b;
+            --accent: #7e22ce;
+
+            --border: #d8b4fe;
+        }
+
+
+        /* =========================
+           BODY
+        ========================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at top left, rgba(126,34,206,.16), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(168,85,247,.12), transparent 35%),
+                var(--bg-main);
+
+            color: var(--text-main);
+
+            font-family:
+                "Segoe UI",
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
+
+            transition: .3s;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            background: rgba(20,6,34,.96) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        [data-bs-theme="light"] .navbar {
+            background: rgba(76,20,125,.97) !important;
+        }
+
+        .navbar-brand {
+            color: #d8b4fe !important;
+            font-size: 1.55rem;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            margin-left: 8px;
+            transition: .3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #d8b4fe !important;
+        }
+
+
+        /* =========================
+           THEME BUTTON
+        ========================== */
+
+        .theme-btn {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            border: 1px solid #c084fc;
+
+            background: rgba(255,255,255,.12);
+            color: white;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .theme-btn:hover {
+            background: #9333ea;
+            transform: rotate(15deg);
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .gallery-hero {
+            min-height: 420px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(25,5,45,.50),
+                    rgba(25,5,45,.85)
+                ),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=90");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-hero::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(126,34,206,.55),
+                    rgba(76,29,149,.25),
+                    rgba(192,132,252,.20)
+                );
+
+            mix-blend-mode: color;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 800px;
+
+            padding: 30px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 5px 20px rgba(0,0,0,.7);
+        }
+
+        .hero-content p {
+            color: #f3e8ff;
+            font-size: 1.1rem;
+        }
+
+        .purple-line {
+            width: 100px;
+            height: 4px;
+
+            margin: 20px auto;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7e22ce,
+                    #e9d5ff,
+                    #7e22ce
+                );
+        }
+
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        .gallery-section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            color: var(--accent);
+
+            font-weight: 800;
+
+            text-align: center;
+
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--text-sub);
+
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+
+        /* =========================
+           PURPLE SPACE GALLERY
+        ========================== */
+
+        .space-card {
+
+            position: relative;
+
+            height: 330px;
+
+            overflow: hidden;
+
+            border-radius: 25px;
+
+            border: 1px solid var(--border);
+
+            background: #210837;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.30);
+
+            transition:
+                transform .4s ease,
+                box-shadow .4s ease;
+        }
+
+        .space-card:hover {
+
+            transform:
+                translateY(-8px)
+                scale(1.01);
+
+            box-shadow:
+                0 25px 55px rgba(126,34,206,.35);
+        }
+
+
+        /* IMAGE */
+
+        .space-card img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform .7s ease,
+                filter .5s ease;
+
+            filter:
+                saturate(.85)
+                contrast(1.05);
+        }
+
+        .space-card:hover img {
+
+            transform: scale(1.12);
+
+            filter:
+                saturate(1.05)
+                contrast(1.08);
+        }
+
+
+        /* PURPLE OVERLAY */
+
+        .space-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                linear-gradient(
+                    to top,
+                    rgba(18,3,35,.95) 0%,
+                    rgba(53,12,85,.45) 45%,
+                    rgba(126,34,206,.18) 100%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    rgba(168,85,247,.28),
+                    transparent 55%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* TEXT */
+
+        .space-info {
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            z-index: 3;
+
+            padding: 25px;
+        }
+
+        .space-info h3 {
+
+            color: white;
+
+            font-weight: 800;
+
+            margin-bottom: 5px;
+
+            text-shadow:
+                0 3px 10px rgba(0,0,0,.8);
+        }
+
+        .space-info p {
+
+            color: #eadcff;
+
+            margin: 0;
+
+            font-size: .92rem;
+        }
+
+
+        /* =========================
+           FOOD GALLERY
+        ========================== */
+
+        .food-card {
+
+            background: var(--bg-card);
+
+            border: 1px solid var(--border);
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            height: 100%;
+
+            transition: .4s;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.20);
+        }
+
+        .food-card:hover {
+
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 20px 45px rgba(126,34,206,.25);
+        }
+
+        .food-image {
+
+            height: 250px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background: #25083c;
+        }
+
+        .food-image img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: .6s;
+        }
+
+        .food-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .food-image::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(126,34,206,.15),
+                    transparent
+                );
+
+            pointer-events: none;
+        }
+
+        .food-info {
+            padding: 20px;
+        }
+
+        .food-info h4 {
+
+            color: var(--accent);
+
+            font-weight: 700;
+        }
+
+        .food-info p {
+
+            color: var(--text-sub);
+
+            margin-bottom: 0;
+        }
+
+
+        /* =========================
+           LIGHT MODE FIX
+        ========================== */
+
+        [data-bs-theme="light"] .food-card {
+            box-shadow:
+                0 10px 30px rgba(92,28,150,.15);
+        }
+
+        [data-bs-theme="light"] .space-card {
+            box-shadow:
+                0 15px 35px rgba(92,28,150,.18);
+        }
+
+        [data-bs-theme="light"] .section-title {
+            color: #6b21a8;
+        }
+
+
+        /* =========================
+           INSTAGRAM SECTION
+        ========================== */
+
+        .insta-box {
+
+            padding: 50px 30px;
+
+            border-radius: 30px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #3b0764,
+                    #7e22ce,
+                    #581c87
+                );
+
+            border: 1px solid #c084fc;
+
+            box-shadow:
+                0 20px 60px rgba(126,34,206,.35);
+        }
+
+        .insta-box h2 {
+            color: white;
+            font-weight: 800;
+        }
+
+        .insta-box p {
+            color: #f3e8ff;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+
+            background: var(--bg-nav);
+
+            border-top: 1px solid var(--border);
+
+            color: white;
+
+            padding: 30px 0;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media(max-width: 768px) {
+
+            .gallery-hero {
+                min-height: 350px;
+            }
+
+            .space-card {
+                height: 280px;
+            }
+
+            .food-image {
+                height: 220px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="index.html">
+            <i class="bi bi-cup-hot-fill me-2"></i>
+            Mehréa Café
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">
+                        Menu
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="gallery.html">
+                        Gallery
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+
+                <li class="nav-item ms-lg-3">
+
+                    <button
+                        class="theme-btn"
+                        onclick="toggleTheme()"
+                        title="Change Theme">
+
+                        <i
+                            class="bi bi-sun-fill"
+                            id="themeIcon">
+                        </i>
+
+                    </button>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="gallery-hero">
+
+    <div class="hero-content">
+
+        <p class="text-uppercase fw-bold mb-2">
+            Mehréa Café Collection
+        </p>
+
+        <h1>
+            Our Purple World 💜
+        </h1>
+
+        <div class="purple-line"></div>
+
+        <p>
+            A Pinterest-inspired collection of cozy spaces,
+            dreamy purple aesthetics, delicious food and
+            beautiful café moments.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     OUR PURPLE SPACE
+========================= -->
+
+<section class="gallery-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            ✨ Our Purple Space
+        </h2>
+
+        <p class="section-subtitle">
+            Different cozy spaces with dreamy violet and Pinterest-inspired aesthetics
+        </p>
+
+
+        <div class="row g-4">
+
+
+            <!-- IMAGE 1 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="space-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=90"
+                        alt="Purple aesthetic restaurant interior"
+                        onerror="this.src='https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=90';">
+
+                    <div class="space-info">
+
+                        <h3>Violet Dining Room</h3>
+
+                        <p>
+                            A dreamy dining space with cozy purple vibes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- IMAGE 2 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="space-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=90"
+                        alt="Elegant restaurant lounge"
+                        onerror="this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=90';">
+
+                    <div class="space-info">
+
+                        <h3>Lavender Lounge</h3>
+
+                        <p>
+                            Soft lights, stylish tables and relaxing conversations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- IMAGE 3 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="space-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=90"
+                        alt="Cozy purple cafe"
+                        onerror="this.src='https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=90';">
+
+                    <div class="space-info">
+
+                        <h3>Neon Evening Corner</h3>
+
+                        <p>
+                            A beautiful spot for late-night coffee and memories.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- IMAGE 4 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="space-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=90"
+                        alt="Floral cafe interior"
+                        onerror="this.src='https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=90';">
+
+                    <div class="space-info">
+
+                        <h3>Floral Café Corner</h3>
+
+                        <p>
+                            Greenery, warm lights and a magical purple mood.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- IMAGE 5 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="space-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1000&q=90"
+                        alt="Modern restaurant seating"
+                        onerror="this.src='https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=90';">
+
+                    <div class="space-info">
+
+                        <h3>Midnight Café Mood</h3>
+
+                        <p>
+                            Modern seating with deep violet aesthetic energy.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- IMAGE 6 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="space-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=90"
+                        alt="Elegant cafe seating">
+
+                    <div class="space-info">
+
+                        <h3>Dreamy Hangout Spot</h3>
+
+                        <p>
+                            Made for friends, photos, coffee and beautiful moments.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOD GALLERY
+========================= -->
+
+<section class="gallery-section pt-0">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🍰 Delicious Moments
+        </h2>
+
+        <p class="section-subtitle">
+            Beautiful food and drinks made for your Mehréa experience
+        </p>
+
+
+        <div class="row g-4">
+
+
+            <!-- MATCHA -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="food-card">
+
+                    <div class="food-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=1000&q=90"
+                            alt="Matcha Latte">
+
+                    </div>
+
+                    <div class="food-info">
+
+                        <h4>Japanese Matcha Latte</h4>
+
+                        <p>
+                            Creamy, smooth and refreshing matcha perfection.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MOJITO -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="food-card">
+
+                    <div class="food-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1000&q=90"
+                            alt="Fresh Mojito">
+
+                    </div>
+
+                    <div class="food-info">
+
+                        <h4>Fresh Mojito</h4>
+
+                        <p>
+                            Sparkling, icy and refreshing with citrus flavors.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SHAKE -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="food-card">
+
+                    <div class="food-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1000&q=90"
+                            alt="Chocolate Milkshake">
+
+                    </div>
+
+                    <div class="food-info">
+
+                        <h4>Signature Thick Shake</h4>
+
+                        <p>
+                            Rich, creamy and loaded with delicious sweetness.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CAKE -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="food-card">
+
+                    <div class="food-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=90"
+                            alt="Chocolate Cake">
+
+                    </div>
+
+                    <div class="food-info">
+
+                        <h4>Chocolate Fudge Cake</h4>
+
+                        <p>
+                            Rich chocolate layers for the perfect dessert moment.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- WAFFLE -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="food-card">
+
+                    <div class="food-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=1000&q=90"
+                            alt="Belgian Waffle">
+
+                    </div>
+
+                    <div class="food-info">
+
+                        <h4>Belgian Waffle</h4>
+
+                        <p>
+                            Crispy golden waffles with sweet toppings.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BURGER -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="food-card">
+
+                    <div class="food-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=90"
+                            alt="Chicken Burger">
+
+                    </div>
+
+                    <div class="food-info">
+
+                        <h4>Signature Chicken Burger</h4>
+
+                        <p>
+                            Juicy chicken, fresh vegetables and a soft bun.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FINAL PURPLE BOX
+========================= -->
+
+<section class="pb-5">
+
+    <div class="container">
+
+        <div class="insta-box">
+
+            <i class="bi bi-camera-fill display-3 text-white"></i>
+
+            <h2 class="mt-3">
+                Every Corner is a Memory 💜
+            </h2>
+
+            <p>
+                Coffee dates, birthdays, study sessions or late-night hangouts —
+                Mehréa Café is made for beautiful moments.
+            </p>
+
+            <a
+                href="contact.html"
+                class="btn btn-light px-4 py-2 fw-bold mt-2">
+
+                Reserve Your Purple Corner
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        <p class="mb-1 fw-bold">
+            ☕ Mehréa Café
+        </p>
+
+        <p class="mb-0 small">
+            © 2026 Mehréa Café BD — Made with 💜
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- =========================
+     THEME SCRIPT
+========================= -->
+
+<script>
+
+    function toggleTheme() {
+
+        const html = document.documentElement;
+
+        const currentTheme =
+            html.getAttribute("data-bs-theme");
+
+        const newTheme =
+            currentTheme === "dark"
+            ? "light"
+            : "dark";
+
+        html.setAttribute(
+            "data-bs-theme",
+            newTheme
+        );
+
+        localStorage.setItem(
+            "mehrea_theme",
+            newTheme
+        );
+
+        updateThemeIcon(newTheme);
+    }
+
+
+    function updateThemeIcon(theme) {
+
+        const icon =
+            document.getElementById("themeIcon");
+
+        if (!icon) return;
+
+        if (theme === "dark") {
+
+            icon.className =
+                "bi bi-sun-fill";
+
+        } else {
+
+            icon.className =
+                "bi bi-moon-stars-fill";
+
+        }
+
+    }
+
+
+    const savedTheme =
+        localStorage.getItem("mehrea_theme")
+        || "dark";
+
+
+    document.documentElement.setAttribute(
+        "data-bs-theme",
+        savedTheme
+    );
+
+
+    updateThemeIcon(savedTheme);
+
+</script>
+
+
+</body>
+</html>
