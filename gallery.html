@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery | Mehréa Café</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           ROOT COLORS - DARK MODE
+        ========================== */
+
+        :root {
+            --bg-main: #0d0417;
+            --bg-card: #180829;
+            --bg-nav: #140622;
+
+            --text-main: #ffffff;
+            --text-sub: #e0ccff;
+            --text-accent: #c084fc;
+
+            --border-color: #4c1d72;
+
+            --purple-dark: #4c1d72;
+            --purple: #8b5cf6;
+            --purple-light: #d8b4fe;
+        }
+
+
+        /* =========================
+           LIGHT MODE
+        ========================== */
+
+        [data-bs-theme="light"] {
+            --bg-main: #f7efff;
+            --bg-card: #ffffff;
+            --bg-nav: #350e5e;
+
+            --text-main: #2b123f;
+            --text-sub: #613d75;
+            --text-accent: #7e22ce;
+
+            --border-color: #d8b4fe;
+        }
+
+
+        /* =========================
+           BODY
+        ========================== */
+
+        body {
+            background: var(--bg-main);
+            color: var(--text-main);
+
+            font-family:
+                "Segoe UI",
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .bg-purple-nav {
+            background: var(--bg-nav) !important;
+        }
+
+
+        .navbar-brand {
+            color: var(--purple-light) !important;
+        }
+
+
+        .navbar .nav-link {
+            color: #ffffff !important;
+            transition: 0.3s;
+        }
+
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: #d8b4fe !important;
+        }
+
+
+        /* =========================
+           PURPLE TEXT
+        ========================== */
+
+        .text-purple-accent {
+            color: var(--text-accent) !important;
+        }
+
+
+        /* =========================
+           THEME BUTTON
+        ========================== */
+
+        .icon-toggle-btn {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            border: 1px solid #a855f7;
+
+            background: rgba(255,255,255,0.1);
+
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .icon-toggle-btn:hover {
+
+            background: #8b5cf6;
+
+            transform: rotate(15deg);
+
+        }
+
+
+        /* =========================
+           PAGE HERO
+        ========================== */
+
+        .gallery-hero {
+
+            min-height: 330px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(45, 10, 75, 0.96),
+                    rgba(112, 33, 150, 0.85),
+                    rgba(30, 5, 50, 0.96)
+                );
+
+        }
+
+
+        .gallery-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            background: #9333ea;
+
+            filter: blur(180px);
+
+            opacity: 0.35;
+
+            border-radius: 50%;
+
+            top: -200px;
+            left: -150px;
+
+        }
+
+
+        .gallery-hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+            height: 400px;
+
+            background: #c084fc;
+
+            filter: blur(160px);
+
+            opacity: 0.25;
+
+            border-radius: 50%;
+
+            bottom: -200px;
+            right: -100px;
+
+        }
+
+
+        .gallery-hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 800px;
+
+            padding: 40px 20px;
+
+        }
+
+
+        .gallery-hero h1 {
+
+            font-weight: 800;
+
+            font-size: clamp(2.3rem, 5vw, 4.5rem);
+
+            color: #ffffff;
+
+        }
+
+
+        .gallery-hero p {
+
+            color: #eadcff;
+
+            font-size: 1.1rem;
+
+        }
+
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        .section-title {
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .section-subtitle {
+
+            color: var(--text-sub);
+
+            max-width: 700px;
+
+            margin: auto;
+
+        }
+
+
+        /* =========================
+           PURPLE SPACE CARD
+        ========================== */
+
+        .purple-space-card {
+
+            position: relative;
+
+            height: 330px;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                var(--border-color);
+
+            box-shadow:
+                0 12px 35px
+                rgba(70, 15, 100, 0.25);
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+
+        }
+
+
+        .purple-space-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(120, 40, 180, 0.4);
+
+        }
+
+
+        .purple-space-card img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.6s ease,
+                filter 0.6s ease;
+
+        }
+
+
+        .purple-space-card:hover img {
+
+            transform: scale(1.08);
+
+            filter:
+                saturate(1.15)
+                contrast(1.05);
+
+        }
+
+
+        /* Purple Overlay */
+
+        .purple-space-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(76, 29, 149, 0.45),
+                    rgba(168, 85, 247, 0.18),
+                    rgba(15, 4, 30, 0.55)
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        /* Card Name */
+
+        .purple-space-card span {
+
+            position: absolute;
+
+            z-index: 3;
+
+            bottom: 20px;
+            left: 22px;
+
+            color: white;
+
+            font-size: 1.25rem;
+
+            font-weight: 800;
+
+            text-shadow:
+                0 3px 10px
+                rgba(0,0,0,0.8);
+
+        }
+
+
+        /* =========================
+           FOOD GALLERY CARD
+        ========================== */
+
+        .gallery-card {
+
+            background: var(--bg-card);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            height: 100%;
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+        }
+
+
+        .gallery-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(100, 30, 160, 0.25);
+
+        }
+
+
+        .gallery-card img {
+
+            width: 100%;
+
+            height: 240px;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: transform 0.4s ease;
+
+        }
+
+
+        .gallery-card:hover img {
+
+            transform: scale(1.05);
+
+        }
+
+
+        .gallery-card-title {
+
+            padding: 16px;
+
+            font-weight: 700;
+
+            color: var(--text-main);
+
+            text-align: center;
+
+        }
+
+
+        /* =========================
+           LIGHT MODE FIX
+        ========================== */
+
+        [data-bs-theme="light"] body {
+
+            color: #2b123f;
+
+        }
+
+
+        [data-bs-theme="light"] .gallery-card {
+
+            background: white;
+
+        }
+
+
+        [data-bs-theme="light"] .gallery-card-title {
+
+            color: #2b123f;
+
+        }
+
+
+        [data-bs-theme="light"] .section-subtitle {
+
+            color: #613d75;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+
+            background: var(--bg-nav);
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            .purple-space-card {
+
+                height: 270px;
+
+            }
+
+
+            .gallery-card img {
+
+                height: 210px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================== -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-purple-nav sticky-top border-bottom border-secondary">
+
+    <div class="container">
+
+
+        <!-- Logo -->
+
+        <a class="navbar-brand fw-bold fs-3" href="index.html">
+
+            <i class="bi bi-cup-hot-fill me-2"></i>
+
+            Mehréa Café
+
+        </a>
+
+
+        <!-- Mobile Theme Button -->
+
+        <div class="d-flex d-lg-none ms-auto me-2">
+
+            <button
+                class="icon-toggle-btn"
+                onclick="toggleTheme()"
+            >
+
+                <i
+                    class="bi bi-sun-fill"
+                    id="themeIconMobile"
+                ></i>
+
+            </button>
+
+        </div>
+
+
+        <!-- Mobile Menu -->
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+        >
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- Navigation -->
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav"
+        >
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link fw-semibold"
+                        href="index.html"
+                    >
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link fw-semibold"
+                        href="about.html"
+                    >
+
+                        Our Story
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link fw-semibold"
+                        href="menu.html"
+                    >
+
+                        Menu
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link fw-semibold active"
+                        href="gallery.html"
+                    >
+
+                        Aesthetic Gallery
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link fw-semibold"
+                        href="contact.html"
+                    >
+
+                        Reservation
+
+                    </a>
+
+                </li>
+
+
+                <!-- Desktop Theme Button -->
+
+                <li class="nav-item ms-lg-3 d-none d-lg-block">
+
+                    <button
+                        class="icon-toggle-btn"
+                        onclick="toggleTheme()"
+                    >
+
+                        <i
+                            class="bi bi-sun-fill"
+                            id="themeIconDesktop"
+                        ></i>
+
+                    </button>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================== -->
+
+<section class="gallery-hero">
+
+    <div class="gallery-hero-content">
+
+        <h1>
+
+            Our Aesthetic Gallery
+
+        </h1>
+
+
+        <p class="mt-3">
+
+            A dreamy collection of purple interiors,
+            cozy corners, signature drinks,
+            desserts and beautiful café moments.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     OUR PURPLE SPACE
+========================== -->
+
+<section class="py-5">
+
+    <div class="container">
+
+
+        <div class="text-center mb-5">
+
+            <h2
+                class="section-title text-purple-accent"
+            >
+
+                Our Purple Space
+
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                Different shades of purple,
+                dreamy interiors and Pinterest-inspired
+                café aesthetics.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="row g-4">
+
+
+            <!-- SPACE 1 -->
+
+            <div class="col-md-6">
+
+                <div class="purple-space-card">
+
+                    <img
+                        src="https://i.pinimg.com/736x/23/aa/20/23aa20d9db477b16a9707b3c39402c88.jpg"
+                        alt="Lavender aesthetic cafe"
+                    >
+
+                    <span>
+
+                        Lavender Dream Café
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SPACE 2 -->
+
+            <div class="col-md-6">
+
+                <div class="purple-space-card">
+
+                    <img
+                        src="https://i.pinimg.com/originals/91/97/37/91973734be9ad3e5103ad060b9f6cbc0.jpg"
+                        alt="Purple Pinterest restaurant"
+                    >
+
+                    <span>
+
+                        Violet Dining Lounge
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SPACE 3 -->
+
+            <div class="col-md-6">
+
+                <div class="purple-space-card">
+
+                    <img
+                        src="https://i.pinimg.com/736x/e5/c9/40/e5c940e54b883d0a815fe81936d905cd.jpg"
+                        alt="Luxury purple interior"
+                    >
+
+                    <span>
+
+                        Royal Purple Corner
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SPACE 4 -->
+
+            <div class="col-md-6">
+
+                <div class="purple-space-card">
+
+                    <img
+                        src="https://storage.googleapis.com/mon-resto-halal/restaurants/d6dc6d3e-2d97-4823-ab26-f223d0673f37/thumb%401024_cae84d34-6433-4b6f-a70f-04c0f4dd2273.jpg"
+                        alt="Pastel purple cafe"
+                    >
+
+                    <span>
+
+                        Pastel Purple Escape
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SPACE 5 -->
+
+            <div class="col-md-6">
+
+                <div class="purple-space-card">
+
+                    <img
+                        src="https://assets.venues.othership.com/uploads/8a3af982-76c7-443e-8d51-daf6fd9f5d64/WechatIMG211%201-84672d79-5a14-48d7-99ba-9ae71a4be381.jpg"
+                        alt="Purple neon cafe"
+                    >
+
+                    <span>
+
+                        Neon Violet Nights
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SPACE 6 -->
+
+            <div class="col-md-6">
+
+                <div class="purple-space-card">
+
+                    <img 
+    src="https://romanticspotssanantonio.com/wp-content/uploads/2023/08/Kaffeinated-Crepes-Coffee.jpeg"
+    alt="Floral Wisteria Lounge"
+    class="img-fluid w-100"
+>
+
+                    <span>
+
+                        Floral Wisteria Lounge
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOD & DRINKS
+========================== -->
+
+<section class="py-5">
+
+    <div class="container">
+
+
+        <div class="text-center mb-5">
+
+            <h2
+                class="section-title text-purple-accent"
+            >
+
+                Mehréa Food & Drinks
+
+            </h2>
+
+
+            <p class="section-subtitle">
+
+                Handcrafted drinks, delicious desserts
+                and café favorites made for beautiful moments.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="row g-4">
+
+
+            <!-- MATCHA -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=85&w=1000&auto=format&fit=crop"
+                        alt="Japanese Uji Matcha Latte"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Japanese Uji Matcha Latte
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BLUEBERRY MATCHA -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://www.siftandsimmer.com/wp-content/uploads/2025/07/IMG_3619-featured.jpg"
+                        alt="Iced Blueberry Matcha"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Iced Blueberry Matcha
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PURPLE SIGNATURE DRINK -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://jo-cell.com/cdn/shop/files/98807be9-e3bd-4cd2-b8da-2c573517458e_fda0aa8f-c936-484f-9597-d04f9202f2a7.jpg?v=1776782348&width=1979"
+                        alt="Mehrea Signature Drink"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Mehréa Signature Drink
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TARO SHAKE -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/food_pics_v2/medium/taro_milkshakes.jpg"
+                        alt="Purple Taro Milkshake"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Purple Taro Milkshake
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RED VELVET -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://keke.ae/cdn/shop/files/Red-Velvet-Cake-Recipe-1.jpg?v=1724621404&width=416"
+                        alt="Red Velvet Cake"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Red Velvet Dream Slice
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CHEESECAKE -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://najlepszewkuchni.pl/storage/recipes/2019_06_17/pwh8x1hIkhXu9I877h0f.jpg"
+                        alt="New York Cheesecake"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        New York Cheesecake
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BLUEBERRY TART -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://hips.hearstapps.com/hmg-prod/images/blueberry-tart1-1654189828.jpg?crop=1.00xw%3A0.752xh%3B0%2C0.159xh&resize=1200%3A%2A"
+                        alt="Blueberry Tart"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Blueberry Tart
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LAVA CAKE -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://spaceshipsandlaserbeams.com/wp-content/uploads/2021/12/Chocolate-Lava-Cake-Recipe-Card-1.jpg"
+                        alt="Molten Chocolate Lava Cake"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Molten Choco Lava Cake
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TIRAMISU -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://www.rotaribakes.co.uk/cdn/shop/files/tiramisu.png?v=1764345139&width=1445"
+                        alt="Tiramisu"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Mehréa Tiramisu Cup
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MANGO PUDDING -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://chiccafood.com/wp-content/uploads/Hong-Kong-Mango-Pudding-image-2.jpg"
+                        alt="Mango Custard Pudding"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Mango Custard Pudding
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CHICKEN STRIPS -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://myastoriya.com.ua/upload/resize_cache/iblock/991/1000_800_1/utsuhz7e7bdxkuxi7uqottz3zcp6l2rf.jpg"
+                        alt="Crispy Chicken Strips"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Crispy Chicken Strips
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- WAFFLE -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="https://media.triple.guide/triple-cms/c_limit%2Cf_auto%2Ch_1024%2Cw_1024/63f2af86-b2b6-4b3c-93b5-2640b630c68a.jpeg"
+                        alt="Belgian Waffle with Ice Cream"
+                    >
+
+                    <div class="gallery-card-title">
+
+                        Belgian Waffle with Ice Cream
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer class="text-center py-4">
+
+    <p class="mb-0">
+
+        © 2026 Mehréa Café BD.
+        All Rights Reserved.
+
+    </p>
+
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- =========================
+     THEME SCRIPT
+========================== -->
+
+<script>
+
+function toggleTheme() {
+
+    const html =
+        document.documentElement;
+
+    const currentTheme =
+        html.getAttribute("data-bs-theme");
+
+    const newTheme =
+        currentTheme === "dark"
+            ? "light"
+            : "dark";
+
+
+    html.setAttribute(
+        "data-bs-theme",
+        newTheme
+    );
+
+
+    localStorage.setItem(
+        "mehrea_theme",
+        newTheme
+    );
+
+
+    updateIcon(newTheme);
+
+}
+
+
+
+function updateIcon(theme) {
+
+    const iconMobile =
+        document.getElementById(
+            "themeIconMobile"
+        );
+
+
+    const iconDesktop =
+        document.getElementById(
+            "themeIconDesktop"
+        );
+
+
+    const iconClass =
+        theme === "dark"
+            ? "bi-sun-fill"
+            : "bi-moon-stars-fill";
+
+
+    if (iconMobile) {
+
+        iconMobile.className =
+            "bi " + iconClass;
+
+    }
+
+
+    if (iconDesktop) {
+
+        iconDesktop.className =
+            "bi " + iconClass;
+
+    }
+
+}
+
+
+
+/* Load Saved Theme */
+
+const savedTheme =
+    localStorage.getItem(
+        "mehrea_theme"
+    ) || "dark";
+
+
+document.documentElement.setAttribute(
+    "data-bs-theme",
+    savedTheme
+);
+
+
+updateIcon(savedTheme);
+
+</script>
+
+
+</body>
+</html>
